@@ -59,7 +59,7 @@ Temporary Items
 /tmp/
 
 # Used by dotenv library to load environment variables.
-# .env
+.env
 
 ## Specific to RubyMotion:
 .dat*
@@ -126,7 +126,6 @@ pickle-email-*.html
 # TODO Comment out this rule if environment variables can be committed
 .env
 
-## Environment normalization:
 /.bundle
 /vendor/bundle
 
