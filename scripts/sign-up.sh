@@ -15,3 +15,7 @@ curl "${API}${URL_PATH}" \
   }'
 
 echo
+
+
+# To run, enter the following at console (with new values for EMAIL and PASSWORD.)
+# EMAIL=heather@heatheradels.com PASSWORD=bunnymuffin scripts/sign-up.sh
