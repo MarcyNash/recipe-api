@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :update, :destroy]
 
   # GET /recipes
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.Recipe.all
 
     render json: @recipes
   end
@@ -40,13 +42,13 @@ class RecipesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = current_user.Recipe.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def recipe_params
-      params.require(:recipe).permit(:name, :location, :comment)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def recipe_params
+    params.require(:recipe).permit(:name, :location, :comment)
+  end
 end
