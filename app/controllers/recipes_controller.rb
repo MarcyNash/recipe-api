@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :update, :destroy]
+class RecipesController < OpenReadController
+  before_action :set_recipe, only: [:update, :destroy]
 
   # GET /recipes
   def index
-    @recipes = current_user.Recipe.all
+    @recipes = Recipe.all
 
     render json: @recipes
   end
@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
       render json: @recipe, status: :created, location: @recipe
@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
-    @recipe = current_user.Recipe.find(params[:id])
+    @recipe = current_user.recipes.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
