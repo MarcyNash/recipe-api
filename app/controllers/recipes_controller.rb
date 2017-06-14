@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RecipesController < OpenReadController
-  before_action :set_recipe, only: [:update, :destroy, :show]
+  before_action :set_recipe, only: [:update, :destroy]
 
   # GET /recipes
   def index
